@@ -1,0 +1,2022 @@
+@font-face {
+  font-family: "Laberintos";
+  src: url("../fonts/QUENCRG_.TTF");
+}
+@font-face {
+  font-family: "Características";
+  src: url("../fonts/Council.otf");
+}
+@keyframes notify {
+  from {
+    text-shadow: none;
+  }
+  to {
+    text-shadow: -1px -1px 4px #4b4a44, 1px -1px 4px #4b4a44, -1px 1px 4px #4b4a44, 1px 1px 4px #4b4a44;
+  }
+}
+:root {
+  --color-foreground: #000000;
+  --color-background: rgb(252, 252, 252);
+  --color-highlight: #d1d2d4;
+  --color-secondary: #acdb91;
+  --color-border: #545557;
+  --font-editor: "Laberintos", serif;
+  --font-input: Arial, sans-serif;
+  --font-special: "Características", serif;
+  --font-subheader: "Características", serif;
+  --font-table: sans-serif;
+}
+.lm .window-content {
+  background: var(--color-background);
+} 
+.lm input:focus {
+  box-shadow: none;
+}
+.lm a:hover {
+  text-shadow: 2px 2px 8px #817f7f;
+}
+.lm.sheet.actor.actor {
+  min-width: 500px;
+  max-width: 500px;
+  min-height: 664px;
+}
+.lm.sheet.monster.monster {
+  min-width: 460px;
+  max-width: 460px;
+  min-height: 580px;
+}
+/*  Journal */
+.journal-sheet .window-content {
+  background: var(--color-background);
+}
+
+/* Chat message */
+
+#chat-log .chat-message {
+  background: var(--color-highlight);
+  border: solid;
+  border-color: var(--color-foreground);
+  border-width: 3px;
+  padding: 0;
+}
+#chat-log .chat-message .message-header {
+  background: black;
+  color: white;
+}
+#chat-log .chat-message .message-header h4 {
+  font-size: 20px;
+  text-shadow: 2px 2px 8px #817f7f;
+  font-family: var(--font-special);
+  font-weight: normal;
+}
+#chat-log .chat-message .message-header .flavor-text {
+  font-size: 14px;
+  background: var(--color-background);
+  color: #000000;
+  border: dashed 1px;
+}
+#chat-log .chat-message .message-content .dice-roll .dice-result .dice-formula {
+  background: var(--color-highlight);
+  border: none;
+  text-shadow: 2px 2px 4px #000000;
+}
+#chat-log .chat-message .message-content .dice-roll .dice-result .dice-total {
+  background: var(--color-foreground);
+  border: solid none none none;
+  font-weight: bolder;
+  color: white;
+}
+.objetive {
+  color: rgb(38, 59, 38);
+  font-weight: bold;
+}
+.success {
+  color: #0A0;
+  font-weight: bold;
+}
+.failed {
+  color: rgb(255, 0, 0);
+  font-weight: bolder;
+}
+.attack {
+  color:white;
+  background: var(--color-foreground);
+  padding: 2px;
+  border-radius: 25%;
+  font-weight: bold;
+  margin: 2px;
+}
+.chat-message div.message-content {
+  background: var(--color-background);
+}
+.lm.chat-card .card-content {
+  background: var(--color-background);
+}
+.lm.chat-card .card-buttons {
+  background: var(--color-background);
+  color: black;
+  font-weight: bold;
+  margin-left: 3px;
+}
+
+.lm.chat-card .card-content > * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+.lm.chat-card header.card-header {
+  background: #ffffff;
+  border: none none groove none;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+.lm.chat-card header.card-header h3 {
+  font-weight: bolder;
+ }
+.lm.chat-card header.card-header img {
+  flex: 0 0 30px;
+  height: 30px;
+  border: none;
+ }
+ .lm.chat-card footer.card-footer {
+  font-size: 10px;
+  color:rgb(66, 65, 65);
+  border: groove;
+  background: #bbb9b9;
+  text-shadow: rgb(211, 211, 211);
+ }
+
+/*   Dialog  */
+.dialog .dialog-buttons button {
+  background: var(--color-foreground);
+  color: white;
+}
+.dialog .dialog-buttons button.default {
+  background: rgb(46, 49, 46);
+  color: white;
+}
+.dialog .window-content {
+  background: var(--color-background);
+  font-weight: bold;
+}
+.dialog .small {
+  font-weight: lighter;
+  font-size: 8px;
+  width: 100px;
+}
+/* Character sheet header */
+
+.lm.sheet.actor .sheet-header {
+  flex: 0 0 155px;
+  border: none;
+  box-shadow: 0 0 6px var(--color-border);
+  color: var(--color-foreground);
+  font-size: 12px;
+  height: auto;
+  line-height: 5px;
+  padding: 1px 2px;
+  width: 100%;
+}
+.lm.sheet.actor .sheet-header .header-fields {
+  height: 100%;
+}
+.lm.sheet.actor .sheet-header .profile-img {
+  border: 5px;
+  border-style: dashed;
+  border-radius: 20px;
+  flex: 0 0 145px;
+  height: 145px;
+  margin: 5px 5px 5px 5px;
+}
+.lm.sheet.actor .sheet-header .header-fields h1.charname input {
+  margin: 0 0 2px 0;
+  border-style: none none solid none;
+  border-width: 2px;
+  border-radius: none;
+  background: var(--color-background);
+}
+.lm.sheet.actor .sheet-header .header-fields h1.charname input:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: var(--color-background);
+} 
+.lm.sheet.actor .sheet-header .header-fields .summary {
+  margin: 0;
+  padding: 0 2px 0 2px;
+  list-style: none;
+  width: 100%;
+  height: 48px;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary .small {
+  width: 80px;
+  flex-grow: 0;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary li {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 5px 0 0;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary .header-data {
+  border-style: none none solid none;
+  border-width: 2px;
+  text-shadow: #9c9c9c;
+  padding: 16px 0px 4px 0px;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary .header-input {
+  border-style: none none solid none;
+  border-width: 2px;
+  text-shadow: #9c9c9c;
+  padding: 16px 0px 4px 0px;
+  background: var(--color-background);
+}
+.lm.sheet.actor .sheet-header .header-fields .summary li label {
+  font-family: var(--font-special);
+  font-size: 18px;
+  padding-top: 4px;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary li.notify span {
+  font-weight: bold;
+  animation: 0.8s ease-in 1s infinite alternate notify;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary .field-long {
+  flex-basis: 14px;
+  flex-grow: 0;
+  font-size: 12px;
+  border-style: none none solid none;
+  border-width: 2px;
+  text-shadow: #9c9c9c;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary .field-long input {
+  background: var(--color-background);
+  border-style: none;
+  padding-top: 10px;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary .field-long .next-level {
+  font-weight: bold;
+  padding-top: 16px;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary .field-long .xp-bonus {
+  color: #7a7971;
+  font-size: 10px;
+  position: relative;
+  top: 3px;
+  right: 4px;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary .moral-check {
+  color: #a1a099;
+  position: absolute;
+  top: 148px;
+  right: 175px;
+}
+.lm.sheet.actor .sheet-header .header-fields .summary .moral-check:hover {
+  color: black;
+}
+
+/* Character nav tabs */
+
+.lm.sheet.actor nav.sheet-tabs {
+  position: absolute;
+  transform: rotate(90deg);
+  top: 370px;
+  right: -192px;
+  width: 370px;
+  border-top: none;
+  height: 30px;
+  z-index: -1;
+  justify-content: space-evenly;
+}
+.lm.sheet.actor nav.sheet-tabs .item {
+  padding: 2px 10px 0;
+  margin-left: 1px;
+  text-indent: 4px;
+  line-height: 1.6;
+  background: rgb(207, 205, 205);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 80px;
+  box-shadow: 0 0 6px 1px rgba(121, 115, 115, 0.9);
+  font-size: 12px;
+  color: black;
+  filter: brightness(0.9);
+}
+.lm.sheet.actor nav.sheet-tabs .item.active {
+  filter: none;
+  z-index: 1;
+  font-weight: bold;
+  text-shadow: white;
+  margin-bottom: -1px;
+}
+
+/* Character Atribbute tab */
+
+.lm .sheet-body {
+  padding: 5px 0;
+  height: calc(100% - 140px);
+}
+.lm .sheet-body .headabilities {
+  font-family: var(--font-special);
+  font-size: 20px;
+  text-align: center;
+  border-style: none none solid none;
+}
+.lm .sheet-body .attribute-tab .attributes-group {
+  flex: 0 0 100px;
+}
+.lm .sheet-body .attribute-tab .attributes-group h3 a {
+  font-size: 11px;
+}
+.lm .sheet-body .attribute-tab .attributes-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-evenly;
+}
+.lm .sheet-body .attribute-tab .attributes-group ul li.ability-score {
+  height: calc(100% - 20px);
+  float: center;
+  display: flex;
+  flex-direction: row;
+  flex-basis: 70px;
+  flex-grow: 0;
+  text-align: center;
+}
+.lm .sheet-body .attribute-tab .attributes-group .attribute-name {
+  font-family: var(--font-special);
+  font-size: 26px;
+  color: white;
+  background-color: black;
+  padding: 5px 5px 5px 5px;
+  margin-bottom: 4%;
+}
+.lm .sheet-body .attribute-tab .attributes-group .attribute-value {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: none;
+  box-shadow: 2px 2px #888888;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 1px 1px 1px 1px;
+  margin: 0 2px 4% 2px;
+}
+.lm .sheet-body .attribute-tab .attributes-group .attribute-value input {
+  background: var(--color-background);
+  border-style: none;
+}
+.lm .sheet-body .attribute-tab .attributes-group .attribute-value span.abilities-mod {
+  top: 2px;
+  right: 5px;
+  color: #31312f;
+  font-size: 12px;
+  position: relative;
+}
+.lm .sheet-body .middle {
+  padding-left: 10px;
+  height: 275px;
+}
+.lm .sheet-body .data {
+  list-style: none;
+}
+.lm .sheet-body .container {
+  position: relative;
+}
+.lm .sheet-body .container .data-box {
+  background: black;
+  font-family: var(--font-special);
+  color: white;
+  border-radius: 10%;
+  font-size: 26px;
+  padding: 2px 4px 2px 4px;
+  text-align: center;
+  position: relative;
+  left: 25%;
+}
+.lm .sheet-body .center {
+  position: absolute;
+  top: 41%;
+  left: 36%;
+  transform: translate(-10%, -25%);
+  font-size: 16px;
+  font-weight: bolder;
+}
+.lm .sheet-body .center input {
+  border-style: none;
+  background: rgba(255, 255, 255, 0);
+  font-weight: bolder;
+}
+.lm .sheet-body .center2 {
+  position: absolute;
+  top: 67%;
+  left: 36%;
+  transform: translate(-10%, -25%);
+  font-size: 16px;
+  font-weight: bolder;
+}
+.lm .sheet-body .center2 input {
+  border-style: none;
+  background:rgba(255, 255, 255, 0);
+  font-weight: bolder;
+}
+.lm .sheet-body .helm {
+  position: absolute;
+  top: 28%;
+  left: 4%;
+  transform: translate(-10%, -25%);
+  font-size: 16px;
+  background: rgb(161, 161, 161);
+  color:black;
+  border-radius: 40% 40% 0 0%;
+  padding: 0 2px 0 2px;
+  border: groove;
+}
+.lm .sheet-body .shield {
+  position: absolute;
+  top: 73%;
+  left: 58%;
+  transform: translate(-10%, -25%);
+  font-size: 16px;
+  background: black;
+  color: white;
+  border-radius: 0 0 45% 45%;
+  padding: 0 2px 0 2px;
+  border: groove;
+}
+.lm .sheet-body .shield-img {
+  border: none;
+  flex: 0 0 70px;
+  height: 70px;
+}
+.lm .sheet-body .heart-img {
+  border: none;
+  padding: 0;
+  flex: 0 0 70px;
+  height: 70px;
+}
+.lm .sheet-body .hd-hp {
+  position: absolute;
+  top: 30%;
+  left: 64%;
+  transform: translate(-10%, -25%);
+  font-size: 14px;
+  border-style: solid;
+  border-width: 2px;
+  background:rgb(192, 192, 192);
+  color:black;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 45% 45% 45% 45%;
+  width: 36px;
+}
+.lm .sheet-body .hd-rest {
+  position: relative;
+  font-size: 10px;
+  background: var(--color-foreground);
+  border-radius: 10%;
+  bottom: 15px;
+  margin-left: 61px;
+  margin-right: 61px;
+  padding-left: 5px;
+}
+.lm .sheet-body .hd-rest li {
+  list-style: none;
+}
+.lm .sheet-body .hd-rest .rest-roll {
+  color: white;
+  text-align: center;
+}
+.lm .sheet-body .hd-rest .rest.max {
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+}
+.lm .sheet-body .hd-rest input {
+  margin: 1px;
+  border: solid;
+  border-radius: 5%;
+  background: var(--color-background);
+  width: 10px;
+}
+.lm .sheet-body .hd-hp .hd-roll:hover {
+  font-weight: bolder;
+  cursor: pointer;
+  text-shadow: #525f85;
+}
+.lm .sheet-body .hd-hp input{
+  border-style: none;
+}
+.lm .sheet-body .headskill {
+  font-family: var(--font-special);
+  font-size: 20px;
+  text-align: center;
+  border-style: none none solid none;
+}
+.lm .sheet-body .box {
+  position: relative;
+  bottom: 20px;
+}
+.lm .sheet-body .box .skills {
+  list-style: none;
+  font-size: 10px;
+  padding-left: 2px;
+  font-weight: bold;
+}
+.lm .sheet-body .box .skills-pack {
+  position: relative;
+  display: flex;
+}
+.lm .sheet-body .box .skills .skills-pack {
+  line-height: 16px;
+  text-align: center;
+}
+.lm .sheet-body .box .skills .skills-pack .skills-check {
+  padding: 0;
+  text-align: left;
+  width: 75px;
+  flex-grow: 0;
+  background: black;
+  color: white;
+  border-radius: 10%;
+}
+.lm .sheet-body .box .skills .skills-pack .skills-mod {
+  padding: 0;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50%;
+  width: 16px;
+  flex-grow: 0;
+}
+
+  /*  Saves   */
+
+.lm .sheet-body .headsaves {
+  font-family: var(--font-special);
+  font-size: 20px;
+  text-align: center;
+  border-style: none none solid none;
+}
+.lm .sheet-body .saving {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.lm .sheet-body .saving .save {
+  display: flex;
+  flex-direction: row;
+}
+.lm .sheet-body .saving .save-name {
+  width: 40px;
+  margin: 0;
+  line-height: 35px;
+}
+.lm .sheet-body .saving .save-name a {
+  margin: auto;
+}
+.lm .sheet-body .saving .save.saving-throw .save-name {
+  line-height: 16px;
+  width: 80px;
+  color: white;
+  background-color: var(--color-foreground);
+  border: var(--color-background);
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+}
+.lm .sheet-body .saving .save.saving-throw .save-value {
+  line-height: 29px;
+}
+.lm .sheet-body .saving .save .save-value {
+  width: 45px;
+  flex-grow: 0;
+}
+.lm .sheet-body .saving .save .save-value span {
+  display: flex;
+  border: solid;
+  border-width: 1px;
+  border-radius: 10%;
+  font-weight: bolder;
+  margin: 2px;
+  padding-left: 12px;
+}
+.lm .sheet-body .saving-bonus {
+  list-style: none;
+  padding-left: 4px;
+  display: flex;
+  text-align: center;
+}
+.lm .sheet-body .saving-bonus .saving-name {
+  border: solid;
+  border-width: 2px;
+  margin: 2px;
+  width: 84px;
+  border-radius: 10% 10% 5% 5%;
+}
+.lm .sheet-body .saving-bonus .saving-name h4 {
+  color: white;
+  background: var(--color-foreground);
+}
+.lm .sheet-body .saving-bonus .saving-name span {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 4px;
+}
+
+  /*  --Combat-- */
+.lm .sheet-body .combat {
+  padding: 0;
+  height: 65px;
+}
+.lm .sheet-body .combat .thac0-data {
+  padding: 2px;
+  height: fit-content;
+}
+.lm .sheet-body .combat .thac0-data ul {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  width: 264px;
+  flex-grow: 0;
+}
+.lm .sheet-body .combat .thac0-data ul .thac0-head {
+  background:  var(--color-foreground);
+  font-family: var(--font-special);
+  font-size: 20px;
+  color: white;
+  flex-grow: 0;
+  padding: 4px;
+  border-radius: 15%;
+}
+.lm .sheet-body .combat .thac0-data ul li.thac0 {
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
+  flex-grow: 0;
+  padding: 2px;
+  border-style: solid;
+  border-width: 1px;
+}
+.lm .sheet-body .combat .thac0-data ul li .value {
+  border-style: none none solid none;
+  border-width: 2px;
+}
+.lm .sheet-body .combat .thac0-data ul .thac0-ini {
+  font-size: 16px;
+  font-weight: bolder;
+  flex-grow: 0;
+  padding: 4px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 2px;
+}
+.lm .sheet-body .combat .thac0-data ul .thac0-des {
+  width: 100%;
+  border-style: solid;
+}
+.lm .sheet-body .combat .thac0-data ul .thac0-des li {
+  float: left;
+  width: 22px;
+}
+.lm .sheet-body .combat .thac0-data ul .thac0-des li.brd {
+  border-right: solid;
+  border-width: 1px;
+}
+.lm .sheet-body .combat .thac0-data ul .thac0-des li.brd .value {
+  font-weight: bolder;
+}
+.lm .sheet-body .combat .thac0-data ul .thac0-des li .value {
+  font-weight: bolder;
+}
+.lm .combat .mod {
+  padding: 3px;
+  width: fit-content;
+}
+.lm .combat .mod .mod-mod {
+  flex-direction: row;
+}
+.lm .combat .mod .mod-mod img {
+  border: none;
+  padding: 2px;
+  flex: 0 0 26px;
+  height: 26px;
+  text-align: left;
+}
+.lm .combat .mod .mod-mod .mod-value {
+  border: solid;
+  padding: 4px;
+  border-width: 2px;
+  border-radius: 50%;
+  position: absolute;
+  font-weight: bold;
+  width: 24px;
+}
+.lm .combat .combat-data {
+  text-align: center;
+  position: relative;
+  right: 1%;
+  border: solid;
+  border-radius: 15% 15% 5% 5%;
+}
+.lm .combat .combat-data .move {
+  font-family: var(--font-special);
+  font-size: 20px;
+  color: white;
+  background-color: black;
+}
+.lm .combat .combat-data span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/*    Weapons   */
+
+.lm.sheet.actor .sheet-body .item.flexrow {
+  border: none none groove none;
+}
+.lm .sheet-body .item .item-rollable:hover .item-image {
+  background-image: url("/icons/svg/d20-grey.svg") !important;
+  cursor: pointer;
+}
+.lm .sheet-body .item .item-rollable .item-image:hover {
+  background-image: url("/icons/svg/d20-black.svg") !important;
+}
+.lm .sheet-body .item .item-name .item-namep {
+  font-weight: bold;
+}
+.lm .sheet-body .item .item-name {
+  text-indent: 8px;
+  text-align: left;
+  overflow: hidden;
+  height: 30px;
+  margin: 0;
+  line-height: 30px;
+  width: 100px;
+  display: flex;
+}
+.lm .sheet-body .item .item-info img {
+  border: none;
+  flex: 0 0 24px;
+  height: 24px;
+  position: relative;
+  top: 5px;
+}
+.lm .sheet-body .item .item-info .wc {
+  position: relative;
+  right: 18px;
+  bottom: 2px;
+  font-weight: bold;
+}
+.lm .sheet-body .item .item-name .item-image {
+  flex-basis: 30px;
+  flex-grow: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.lm .sheet-body .item .dmg {
+  padding-bottom: 4px;
+}
+.lm.sheet.actor .sheet-body .item .item-dice {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px;
+}
+.lm .sheet-body .item .item-anmo {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px;
+  border: groove;
+  border-radius: 50%;
+  border-width: 3px;
+}
+.lm .sheet-body .item .item-range {
+  border: groove;
+  border-radius: 15%;
+  border-width: 2px;
+  font-size: 10px;
+  align-items: center;
+  padding: 4px;
+}
+.lm .sheet-body .item .item-control.item-dmg.item-damage2 {
+  color: rgb(192, 186, 186);
+}
+.lm .inventory .item-controls .item-toggle.item-unequipped {
+  color: rgb(192, 186, 186);
+}
+.lm .inventory .item-controls .item-packed.item-unpacked {
+  color: rgb(192, 186, 186);
+}
+.lm .inventory .item-controls .item-fast.item-unfast {
+  color: rgb(192, 186, 186);
+}
+.lm .inventory .item-conta .item-control.container-toggle.item-unequipped {
+  color: rgb(0, 0, 0);
+}
+.lm.sheet.actor .sheet-body .inventory {
+  padding: 0;
+}
+.lm .sheet-body .inventory .item-titles {
+  text-align: center;
+  padding: 4px 0;
+  background: #000000;
+  color: white;
+  border-style: solid solid none solid;
+  border-color: #e2e2e2;
+}
+
+/*    Features tab    */
+
+.lm.sheet.actor .sheet-body .tab.features .combat-box {
+  background: rgb(211, 208, 208);
+  font-size: 12px;
+  border: groove;
+  box-shadow: rgb(90, 90, 90);
+}
+.lm.sheet.actor .sheet-body .tab.features .combat-box label {
+  font-weight: bold;
+}
+.lm.sheet.actor .sheet-body .tab.features .languages {
+  margin-top: 2px;
+  padding-left: 4px;
+  border: solid 1px;
+  box-shadow: 0 0 6px var(--color-border);
+}
+.lm.sheet.actor .sheet-body .tab.features .languages label {
+  font-size: 20px;
+  font-family: var(--font-special);
+}
+.lm.sheet.actor .sheet-body .tab.features .languages .list {
+  font-size: 12px;
+}
+.lm.sheet.actor .sheet-body .tab.features .skills-box {
+  border: solid 2px;
+  margin-top: 4px;
+}
+.lm.sheet.actor .sheet-body .tab.features .skills-box .skills-head {
+  padding-top: 4px;
+  width: 100%;
+  height: 26px;
+  background: var(--color-foreground);
+}
+.lm.sheet.actor .sheet-body .tab.features .skills-box .skills-head .luck {
+  text-align: right;
+  position: relative;
+  bottom: 16px;
+  margin-right: 3px;
+}
+.lm.sheet.actor .sheet-body .tab.features .skills-box .skills-head a {
+  color: white;
+}
+.lm.sheet.actor .sheet-body .tab.features .skills-box .skills-head .title {
+  color: white;
+  text-align: center;
+}
+.lm.sheet.actor .sheet-body .tab.features .skills-box .skills-head .data {
+  background: var(--color-background);
+  padding: 2px;
+  border-radius: 25%;
+  font-weight: bold;
+}
+.lm.sheet.actor .sheet-body .tab.features .skills-box .skills-list {
+  display: flex;
+  background: var(--color-background);
+  font-size: 12px;
+}
+.lm.sheet.actor .sheet-body .tab.features .skills-box .skills-list span {
+  margin-top: 2px;
+  padding-top: 4px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: grey;
+  width: 76px;
+}
+.lm.sheet.actor .sheet-body .tab.features .skills-box .skills-list input {
+  margin-top: 2px;
+  padding-top: 2px;
+  width: 24px;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+  text-decoration: underline;
+  background: var(--color-background);
+}
+.lm.sheet.actor .sheet-body .tab.features .skills-box .skills-list input:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: var(--color-background);
+}
+.lm.sheet.actor .sheet-body .tab.features .fight-box {
+  margin-top: 2px;
+  border: solid 2px;
+}
+.lm.sheet.actor .sheet-body .tab.features .fight-box img {
+  flex: 0 0 30px;
+  height: 30px;
+}
+.lm.sheet.actor .sheet-body .tab.features .fight-box .fight-head {
+  background: var(--color-foreground);
+}
+.lm.sheet.actor .sheet-body .tab.features .fight-box .fight-head label {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  bottom: 8px;
+}
+.lm.sheet.actor .sheet-body .tab.features .fight-box .fight-head span {
+  background: var(--color-background);
+  font-weight: bold;
+  padding: 4px 4px 4px 4px;
+  position: relative;
+  bottom: 8px;
+  border-radius: 25%;
+}
+.lm.sheet.actor .sheet-body .tab.features .fight-box .fight-head input {
+  background: var(--color-background);
+  font-weight: bold;
+  padding: 4px 4px 4px 4px;
+  position: relative;
+  bottom: 8px;
+  border-radius: 25%;
+  width: 18px;
+}
+.lm.sheet.actor .sheet-body .tab.features .fight-box .fight-head a {
+  position: relative;
+  bottom: 8px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+.lm.sheet.actor .sheet-body .tab.features .fight-box .fight-head .backstab-box img {
+  color: white;
+  border: none;
+  flex: 0 0 20px;
+  height: 20px;
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box {
+  margin-top: 2px;
+  border: solid 2px;
+  height: 94px;
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box .turn-head {
+  background: var(--color-foreground);
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box .turn-head label {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  bottom: 8px;
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box .turn-head span {
+  background: var(--color-background);
+  font-weight: bold;
+  padding: 4px 4px 4px 4px;
+  position: relative;
+  bottom: 8px;
+  border-radius: 25%;
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box .turn-head a {
+  position: relative;
+  bottom: 8px;
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box img {
+  flex: 0 0 30px;
+  height: 30px;
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box .turn.roll img {
+  border: none;
+  flex: 0 0 20px;
+  height: 20px;
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box .righteous {
+  color: rgb(170, 164, 164);
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box .righteous.norighteous {
+  color: rgb(255, 255, 255);
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box .turn.refresh {
+  color: rgb(255, 255, 255);
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box ul {
+  list-style: none;
+  padding: 5px;
+  height: 55px;
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box ul .turned {
+  width: 64px;
+  text-align: center;
+}
+.lm.sheet.actor .sheet-body .tab.features .turn-box ul li label {
+  font-weight: bold;
+  font-size: 12px;
+}
+.lm.sheet.actor .sheet-body .tab.features ol.items-list  {
+  margin-top: 2px;
+  padding: 0px;
+}
+.lm.sheet.actor .sheet-body .tab.features .items-list li.item.header {
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  background: var(--color-foreground);
+  margin-bottom: 2px;
+}
+.lm.sheet.actor .sheet-body .tab.features .items-list li.item .item-image {
+  flex: 0 26px;
+}
+.lm.sheet.actor .sheet-body .tab.features .items-list li.item .item-name {
+  text-align: left;
+}
+.lm.sheet.actor .sheet-body .tab.features .items-list li.item.header .item-controls {
+  text-align: right;
+  padding-top: 8px;
+  padding-right: 4px;
+}
+.lm.sheet.actor .sheet-body .tab.features .items-list li.item .item-controls {
+  padding-top: 4px;
+  text-align: right;
+}
+.lm.sheet.actor .sheet-body .tab.features .items-list .item.flexrow {
+  border: none none groove none;
+}
+.lm.sheet.actor .sheet-body .tab.features .items-list .item .item-name:hover .item-image {
+  background-image: url("/icons/svg/d20-grey.svg") !important;
+  cursor: pointer;
+}
+.lm.sheet.actor .sheet-body .tab.features .items-list .item .item-name .item-image:hover {
+  background-image: url("/icons/svg/d20-black.svg") !important;
+}
+
+/*  Inventory tab */
+
+.lm.sheet.actor .encumbrance {
+  height: 12px;
+  background: var(--color-foreground);
+  margin: 1px 1px 0 1px;
+  border: 1px solid rgba(139, 105, 105, 0.9);
+  border-radius: 3px;
+  position: relative;
+}
+.lm.sheet.actor .encumbrance .encumbrance-bar {
+  position: absolute;
+  background: rgba(226, 223, 223, 0.6);
+  height: 10px;
+  border: 1px solid rgb(134, 98, 98);
+  border-radius: 2px;
+}
+.lm.sheet.actor .encumbrance .encumbrance-label {
+  height: 10px;
+  padding: 0 5px;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 13px;
+  line-height: 12px;
+  text-align: right;
+  color: #EEE;
+  text-shadow: 0 0 5px #000;
+}
+.lm.sheet.actor .encumbrance .encumbrance-breakpoint {
+  display: block;
+  position: absolute;
+}
+.lm.sheet.actor .encumbrance .encumbrance-breakpoint.encumbrance-25 {
+  left: 25%;
+}
+.lm.sheet.actor .encumbrance .encumbrance-breakpoint.encumbrance-50 {
+  left: 50%;
+}
+.lm.sheet.actor .encumbrance .encumbrance-breakpoint.encumbrance-75 {
+  left: 75%;
+}
+.lm.sheet.actor .encumbrance .arrow-up {
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #d8d6c9;
+}
+.lm.sheet.actor .encumbrance .arrow-down {
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #d8d6c9;
+}
+.lm.sheet.actor .encumbrance.encumbered .arrow-up {
+  border-bottom: 4px solid rgba(0, 0, 0, 0.9);
+}
+.lm.sheet.actor .encumbrance.encumbered .arrow-down {
+  border-top: 4px solid rgba(0, 0, 0, 0.9);
+}
+.lm.sheet.actor .fast-bar {
+  height: 2px;
+}
+.lm.sheet.actor .fast-bar .fast-label {
+  color: rgb(255, 255, 255);
+  font-size: 10px;
+  text-align: left;
+  position: relative;
+  left: 10px;
+  bottom: 15px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-titles {
+  background: var(--color-foreground);
+  color: white;
+  font-size: 12px;
+  margin-bottom: 1px;
+  height: 20px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-titles.con {
+  background: rgb(77, 77, 77);
+}
+.lm.sheet.actor .sheet-body .tab.items .item-titles .item-controls {
+  text-align: right;
+  margin-right: 4px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-titles .item-caret {
+  flex: 0 24px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-titles .item-conta {
+  flex: 0 20px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-titles .item-name {
+  padding-left: 4px;
+  text-align: left;
+  flex: 0 100px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-titles .item-data {
+  text-align: center;
+  flex: 0 50px;
+  padding-bottom: 2px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-titles .item-data.long {
+  text-align: center;
+  flex: 0 150px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-titles .field-short {
+  text-align: right;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list {
+  list-style: none;
+  font-size: 12px;
+  padding: 0;
+  margin: 1px 4px 1px 4px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list .item .item-image {
+  flex: 0 0 24px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list .item .icon-row {
+  flex: 0 150px
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list .item .icon-row span {
+  font-size: 12px;
+  flex-grow: 0;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list .item .icon-row img {
+  border: none;
+  flex: 0 0 24px;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list .item .item-image img {
+  border: none;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list .item .item-name {
+  flex: 0 100px;
+  text-align: left;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list .item .field-long {
+  flex: 0 0 60px;
+  padding-top: 6px;
+  text-align: center;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list .item .field-short {
+  flex: 0 0 50px;
+  padding-top: 6px;
+  text-align: center;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list .item .field-short.black {
+  color:rgb(102, 98, 98);
+  font-weight: bolder;
+}
+.lm.sheet.actor .sheet-body .tab.items .item-list .item .item-controls {
+  text-align: right;
+  padding-top: 6px;
+}
+
+
+/*  Spells tab  */
+
+.lm .sheet-body .tab.spells .item-titles {
+  background: var(--color-foreground);
+  color: white;
+  font-size: 12px;
+  margin-bottom: 1px;
+  height: 20px;
+}
+.lm .sheet-body .tab.spells .item-titles span {
+  text-align: center;
+}
+.lm .sheet-body .tab.spells .item-titles .spellLevel {
+  background: var(--color-background);
+  font-size: 12px;
+  margin-left: 2px;
+  color: black;
+  width: 15px;
+  border: solid 1px;
+  text-align: center;
+}
+.lm .sheet-body .tab.spells .item-titles .item-controls {
+  text-align: right;
+}
+.lm .sheet-body .tab.spells .item-titles .item-caret {
+  flex: 0 20px;
+}
+.lm .sheet-body .tab.spells .item-titles .item-name {
+  align-items: left;
+  flex: 0 90px;
+}
+.lm .sheet-body .tab.spells .item-titles .field-short {
+  text-align: right;
+}
+.lm .sheet-body .tab.spells .item-list {
+  list-style: none;
+  font-size: 12px;
+  padding: 0;
+}
+.lm .sheet-body .tab.spells .item-list .item-entry .item .item-name {
+  text-align: left;
+}
+.lm .sheet-body .tab.spells .item-list .item-entry .item .field-long {
+  flex: 0 0 60px;
+  padding-top: 6px;
+  text-align: center;
+}
+.lm .sheet-body .tab.spells .item-list .item-entry .item .item-controls {
+  text-align: right;
+  padding-top: 6px;
+}
+
+
+/* Description tab */
+
+.lm.sheet.actor .sheet-body .class {
+  width: 100%;
+}
+.lm.sheet.actor .sheet-body .class .class-description {
+  border: none;
+  box-shadow: 0 0 6px var(--color-border);
+  font-size: 12px;
+  line-height: 16px;
+  padding: 1px 2px;
+  width: 195px;
+  height: 160px;
+  flex: 0 0 195px;
+}
+.lm.sheet.actor .sheet-body .class .class-description .class-group {
+  text-align: left;
+  padding-left: 2px;
+}
+.lm.sheet.actor .sheet-body .class .class-description .item-control.retainer.noretainer {
+  color: rgb(192, 186, 186);
+}
+.lm.sheet.actor .sheet-body .class .class-description .class-img {
+  flex: 0 0 25px;
+  height: 25px;
+  border: none;
+}
+.lm.sheet.actor .sheet-body .class .class-description label {
+  font-weight: bolder;
+}
+.lm.sheet.actor .sheet-body .class .class-description input {
+  background-color: black;
+  color: white;
+  width: 26px;
+  text-align: center;
+}
+.lm.sheet.actor .sheet-body .class .class-description select{
+  background-color: black;
+  color: white;
+  font-size: 10px;
+}
+.lm.sheet.actor .sheet-body .class .biography {
+  box-shadow: 0 0 4px var(--color-border);
+  height: 160px;
+  padding: 1px 2px;
+  line-height: 16px;
+  margin-left: 4px;
+}
+.lm.sheet.actor .sheet-body .class .biography .headname {
+  font-family: var(--font-special);
+  font-size: 20px;
+  text-align: center;
+}
+.lm.sheet.actor .sheet-body .class .biography .editor {
+  height: 160px;
+}
+.lm.sheet.actor .sheet-body .class .biography .editor .tox .tox-tbtn {
+  height: 24px;
+}
+.lm.sheet.actor .sheet-body .inventory.notes {
+  margin: 2px;
+}
+.lm.sheet.actor .sheet-body .inventory.notes .editor {
+  height: 150px;
+}
+
+
+/*    Item sheet  */
+/*      header        */
+.lm.sheet.item .sheet-header {
+  flex: 0 0 100px;
+  border: none;
+  box-shadow: 0 0 6px var(--color-border);
+  color: var(--color-foreground);
+  font-size: 12px;
+  height: 100px;
+  line-height: 2px;
+  padding: 1px 2px;
+  width: 100%;
+}
+.lm.sheet.item input {
+  border-style: none none solid none;
+  border-width: 1px;
+  background: var(--color-background);
+}
+.lm.sheet.item input:focus {
+  background: var(--color-background);
+}
+.lm.sheet.item .sheet-header .profile-img {
+  border: 2px;
+  border-style: dashed;
+  border-radius: 15%;
+  margin: 4px 4px 4px 4px;
+  height: 90px;
+}
+.lm.sheet.item .sheet-header .header-fields {
+  width: 100%;
+  display: flex;
+  padding-bottom: 10px;
+}
+.lm.sheet.item .sheet-header .header-fields h1.charname {
+  width: 320px;
+}
+.lm.sheet.item .sheet-header .header-fields h1.charname input {
+  border-style: none none solid none;
+  border-width: 3px;
+  background: var(--color-background);
+}
+.lm.sheet.item .sheet-header .header-fields h1.charname input:focus {
+  background: var(--color-background);
+}
+.lm.sheet.item .sheet-header .header-fields .header-data {
+  text-align: center;
+}
+.lm.sheet.item .sheet-header .header-fields .header-data .form-group input {
+  width: 40px;
+}
+.lm.sheet.item .sheet-header .header-fields .header-data .form-occupation label {
+  text-align: center;
+  position: relative;
+  top: 14px;
+  right: 5px;
+}
+.lm.sheet.item .sheet-header .header-fields .header-data .form-occupation .form-coins input {
+  display: flex;
+  width: 50px;
+  color: white;
+  background-color: var(--color-foreground);
+  border-radius: 10%;
+  position: relative;
+  top: 20px;
+  right: 2px;
+}
+.lm.sheet.item .sheet-header .tag-list {
+  margin: 0;
+  height: 26px;
+  overflow: auto;
+  list-style: none;
+  padding: 1px;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 110px;
+  top: 110px;
+}
+.lm.sheet.item .sheet-header .tag-list .tag {
+  background: #242423;
+  border-radius: 5px;
+  color: whitesmoke;
+  padding: 5px 5px;
+  height: 20px;
+  box-shadow: 0 0 3px #949390;
+  margin: 0 2px;
+  text-align: center;
+}
+.lm.sheet.item .sheet-header .tag-list .tag i {
+  font-size: 8px;
+  vertical-align: top;
+  color: #d8d6c9;
+}
+
+/*      body    */
+
+.lm.sheet.item .sheet-body .stats {
+  flex: 0 0 100px;
+  border-right: 1px groove rgba(0, 0, 0, 0.2);
+  padding-right: 2px;
+  font-size: 13px;
+}
+.lm.sheet.item .sheet-body .stats .item-info {
+  border-style: none none ridge none;
+  border-width: 2px;
+  margin: 2px;
+  width: 100px;
+}
+.lm.sheet.item .sheet-body .stats .item-info label {
+  font-weight: bold;
+  width: 55px;
+  padding-top: 5px;
+}
+.lm.sheet.item .sheet-body .stats .item-info select {
+  font-size: 10px;
+  background: var(--color-foreground);
+  color: white;
+  box-shadow: none;
+}
+.lm.sheet.item .sheet-body .stats .item-info select:focus {
+  background: var(--color-foreground);
+  color: white;
+}
+.lm.sheet.item .sheet-body .stats .item-info input {
+  text-align: center;
+  margin-bottom: 4px;
+  width: 35px;
+  position: relative;
+  left: 10px;
+}
+.lm.sheet.item .sheet-body .stats .item-multi {
+  border-width: 2px;
+  margin: 2px;
+  width: 100px;
+}
+.lm.sheet.item .sheet-body .stats .item-multi .item-range {
+  display: flex;
+  text-align: center;
+}
+.lm.sheet.item .sheet-body .stats .item-multi .item-range input {
+  margin-bottom: 4px;
+}
+.lm.sheet.item .sheet-body .stats .item-multi .item-damages {
+  display: flex;
+}
+.lm.sheet.item .sheet-body .stats .item-multi .item-damages input {
+  margin-bottom: 4px;
+}
+.lm.sheet.item .sheet-body .stats .item-multi label{
+  font-weight: bold;
+}
+.lm.sheet.item .sheet-body .stats .ranges-icons{
+  text-align: center;
+}
+.lm.sheet.item .sheet-body .stats .ranges-icons a {
+  color: #969696;
+}
+.lm.sheet.item .sheet-body .stats .ranges-icons a.active {
+  color: #000000;
+}
+.lm.sheet.item .sheet-body .stats .item-info.splintered.nosplintered {
+  color: rgb(192, 186, 186);
+}
+.lm.sheet.item .sheet-body .stats .item-info.treasure.notreasure {
+  color: rgb(192, 186, 186);
+}
+.lm.sheet.item .sheet-body .stats .item-info .quantity {
+  padding-top: 5px;
+}
+.lm.sheet.item .sheet-body .stats .item-long input {
+  width: 80px;
+}
+.lm.sheet.item .sheet-body .stats .item-long .quantity {
+  font-weight: bold;
+  padding-top: 5px;
+}
+.lm.sheet.item .sheet-body .stats .item-info .item-toggle {
+  position: relative;
+  left: 20px;
+}
+.lm.sheet.item .sheet-body .editor {
+  height: 300px; 
+}
+.lm.sheet.item .sheet.body .editor .editor-content {
+  padding: 0 5px;
+}
+
+/* Monster sheet */
+
+.lm.sheet.monster .sheet-header {
+  flex: 0 0 200px;
+  border: none;
+  box-shadow: 0 0 6px var(--color-border);
+  line-height: 5px;
+  padding: 1px 2px;
+  width: 100%;
+}
+.lm.sheet.monster .header-fields {
+  height: 200px;
+}
+.lm.sheet.monster .header-fields .summary {
+  flex: 0 0 100px;
+  list-style: none;
+  padding: 0;
+  margin-left: 5px;
+}
+.lm.sheet.monster input {
+  border: none;
+  background: var(--color-background);
+}
+.lm.sheet.monster .header-fields .summary .container {
+  text-align: center;
+}
+.lm.sheet.monster .header-fields .summary .shield-img {
+  border: none;
+  flex: 0 0 70px;
+  position: relative;
+  right: 25px;
+  top: 18px;
+}
+.lm.sheet.monster .header-fields .summary .heart-img {
+  margin-right: 15px;
+  border: none;
+  flex: 0 0 85px;
+  position: relative;
+  left: 20px;
+  top: 1px;
+}
+.lm.sheet.monster .header-fields .summary .data-box {
+  font-family: var(--font-special);
+  font-size: 18px;
+  background: var(--color-foreground);
+  color: white;
+  position: relative;
+  left: 18px;
+  bottom: 51px;
+  border-radius: 10%;
+  padding: 3px;
+}
+.lm.sheet.monster .header-fields .summary .data-box2 {
+  font-family: var(--font-special);
+  font-size: 18px;
+  background: var(--color-foreground);
+  color: white;
+  position: relative;
+  right: 18px;
+  top: 2px;
+  border-radius: 10%;
+  padding: 3px;
+}
+.lm.sheet.monster .header-fields .summary .container .center {
+  font-size: 22px;
+  font-weight: bold;
+  position: relative;
+  bottom: 34px;
+  right: 18px;
+  width: 29px;
+}
+.lm.sheet.monster .header-fields .summary .container .center2 {
+  font-size: 12px;
+  font-weight: bold;
+  position: relative;
+  bottom: 50px;
+  left: 30px;
+  width: 30px;
+  height: 12px;
+  border-radius: 5%;
+}
+.lm.sheet.monster .header-fields .summary .container .center3 {
+  font-size: 12px;
+  font-weight: bold;
+  position: relative;
+  bottom: 20px;
+  right: 3px;
+  width: 30px;
+  height: 12px;
+  border-radius: 5%;
+}
+.lm.sheet.monster .header-fields .summary .container .hd-hp {
+  position: relative;
+  bottom: 65px;
+  left: 2px;
+  border: solid 2px;
+  width: 45px;
+  height: 45px;
+  border-radius: 10%;
+  background: var(--color-foreground);
+}
+.lm.sheet.monster .header-fields .summary .container .hd-hp .hd-roll{
+  font-weight: bolder;
+  color: white;
+  font-size: 16px;
+  position: relative;
+  top: 6px;
+}
+.lm.sheet.monster .header-fields .summary .container .hd-hp input {
+  font-size: 12px;
+  height: 20px;
+  position: relative;
+  top: 15px;
+}
+.lm.sheet.monster .header-fields .summary .container2 {
+  position: relative;
+  border: solid 2px;
+  width: 40px;
+  border-radius: 10%;
+  left: 4px;
+  background: var(--color-foreground);
+  bottom: 66px;
+  margin-top: 2px;
+  flex: 0 0 38px;
+}
+.lm.sheet.monster .header-fields .summary .container2 .thac0-box {
+  color: white;
+  text-align: center;
+  font-family: var(--font-special);
+  font-size: 16px;
+  position: relative;
+  left: 6px;
+  top: 4px;
+}
+.lm.sheet.monster .header-fields .summary .container2 input {
+  position: relative;
+  top: 8px;
+  left: 1px;
+  height: 18px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+.lm.sheet.monster .sheet-header .header-fields .head {
+  flex: 0 0 200px;
+}
+.lm.sheet.monster .sheet-header .header-fields h1.charname input {
+  border-style: none none solid none;
+  border-width: 2px;
+  border-radius: none;
+  text-align: center;
+  position: relative;
+  font-size: 24px;
+  padding-top: 4px;
+}
+.lm.sheet.monster .sheet-header .header-fields img.profile-img {
+  border: 5px;
+  border-style: dashed;
+  border-radius: 20px;
+  flex: 0 0 110px;
+  height: 110px;
+  margin: 0 4px 4px 40px;
+}
+.lm.sheet.monster .sheet-header .header-fields .head label {
+  font-family: var(--font-special);
+  font-size: 18px;
+  padding-top: 4px;
+  margin-bottom: 2px;
+  margin-left: 30px;
+}
+.lm.sheet.monster .sheet-header .header-fields .head .aligment {
+  border-bottom: solid;
+  border-width: 1px;
+  text-align: center;
+  width: 100px;
+  position: relative;
+  bottom: 4px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul {
+  list-style: none;
+  padding-left: 5px;
+  flex: 0 0 135;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li.mov {
+  border: solid 2px;
+  border-radius: 5%;
+  height: 25px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li.mov label {
+  flex: 0 0 30px;
+  font-family: var(--font-special);
+  font-size: 18px;
+  background: var(--color-foreground);
+  color: white;
+  text-align: center;
+  padding-top: 6px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li.mov input {
+  height: 15px;
+  text-align: center;
+  padding-top: 5px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li.mov span {
+  flex: 0 0 4px;
+  padding-top: 7px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li.mov input.short {
+  flex: 0 0 30px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li .double {
+  background: var(--color-foreground);
+  color: white;
+  flex: 0 0 80px;
+  padding-left: 4px;
+  padding-top: 4px;
+  border-radius: 10%;
+  margin: 2px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li .double a {
+  font-size: 12px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li input.header-input {
+  flex: 0 0 30px;
+  border-bottom: solid 2px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 4px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li .data {
+  flex: 0 0 30px;
+  font-family: var(--font-special);
+  font-size: 18px;
+  background: var(--color-foreground);
+  color: white;
+  text-align: center;
+  padding-top: 6px;
+  margin: 2px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li .appearing-check {
+  position: relative;
+  font-size: 10px;
+  top: 10px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li input.header-input2 {
+  flex: 0 0 32px;
+  font-size: 10px;
+  border-bottom: solid 2px;
+  text-align: center;
+  padding-top: 4px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li.encounter a {
+  flex: 0 0 10px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li input.header-inputl {
+  flex: 0 0 60px;
+  border-bottom: solid 2px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 4px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li .magicUser {
+  font-size: 12px;
+  margin-top: 10px;
+  margin-left: 4px;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li.treasure-table {
+  margin-top: 1px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  border: solid 1px;
+  color: white;
+  font-weight: bold;
+  background: var(--color-foreground);
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li.treasure-table label {
+  width: 50px;
+  text-align: left;
+}
+.lm.sheet.monster .sheet-header .header-fields .monster-data ul li.treasure-table input {
+  margin: 2px;
+  width: 20px;
+  border: none;
+  font-weight: bold;
+}
+
+/*  monster tabs  */
+
+.lm.sheet.monster nav.sheet-tabs {
+  position: absolute;
+  transform: rotate(90deg);
+  top: 370px;
+  right: -192px;
+  width: 370px;
+  border-top: none;
+  height: 30px;
+  z-index: -1;
+  justify-content: space-evenly;
+}
+.lm.sheet.monster nav.sheet-tabs .item {
+  padding: 2px 10px 0;
+  margin-left: 1px;
+  text-indent: 4px;
+  line-height: 1.6;
+  background: rgb(207, 205, 205);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 80px;
+  box-shadow: 0 0 6px 1px rgba(121, 115, 115, 0.9);
+  font-size: 12px;
+  color: black;
+  filter: brightness(0.9);
+}
+.lm.sheet.monster nav.sheet-tabs .item.active {
+  filter: none;
+  z-index: 1;
+  font-weight: bold;
+  text-shadow: white;
+  margin-bottom: -1px;
+}
+.lm.sheet.monster .sheet-body .inventory.notes .editor {
+  height: 80px;
+}
+.lm.sheet.monster .sheet-body .saves {
+  flex: 0 0 150px;
+}
+.lm.sheet.monster .sheet-body .items-list {
+  padding-left: 5px;
+}
+.lm.sheet.monster .sheet-body .item.header {
+  background: var(--color-foreground);
+  color: white;
+}
+.lm.sheet.monster .sheet-body .item .item-image {
+  flex: 0 0 24px;
+}
+.lm.sheet.monster .sheet-body .item .item-image img {
+  border: none;
+}
+.lm.sheet.monster .sheet-body .item .item-name {
+  text-align: left;
+  font-size: 13px;
+  font-weight: bold;
+}
+.lm.sheet.monster .sheet-body .item .item-name h4 {
+  font-weight: bold;
+}
+.lm.sheet.monster .sheet-body .item .item-controls {
+  flex: 0 0 100px;
+  text-align: right;
+  margin-right: 2px;
+  padding-top: 6px;
+}
+.lm.sheet.monster .sheet-body .item .item-controls .item-dice {
+  margin-left: 2px;
+  font-size: 11px;
+  font-weight: bold;
+  background: var(--color-foreground);
+  border-radius: 20%;
+  text-align: center;
+  padding-top: 5px;
+  color: white;
+  flex: 0 0 30px;
+}
+.lm.sheet.monster .sheet-body .item .field-short {
+  flex: 0 0 50px;
+  padding-top: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+.lm.sheet.monster .sheet-body .tab.spells .item-list .item-name {
+  flex: 0 0 190px;
+}
+.lm.sheet.monster .sheet-body .tab.spells .item-list .item-controls {
+  flex: 0 0 185px;
+}
+
+/*  Container sheet */
+
+.lm .item-control.gm-toggle.nogm {
+  color: rgb(192, 186, 186);
+}
+.lm .item-control.group-toggle.nogroup {
+  color: rgb(192, 186, 186);
+}
+.lm .item-control.shop-toggle.noshop {
+  color: rgb(192, 186, 186);
+}
+.lm .item-control.object-toggle.noobject {
+  color: rgb(192, 186, 186);
+}
+.lm .item-control.magic-toggle.nomagic {
+  color: rgb(192, 186, 186);
+}
+.lm .sheet-header .header-fields ul.summary.options {
+  flex: content;
+  text-align: center;
+  color: white;
+  background: var(--color-foreground);
+  border-radius: 4%;
+}
+.lm .sheet-header .header-fields .summary-shop li {
+  list-style: none;
+}
+.lm .sheet-header .header-fields .summary-shop li span {
+  text-align: center;
+  padding-bottom: 2px;
+}
+.lm .sheet-header .header-fields .summary-shop li label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: bolder;
+  padding: 2px;
+  text-align: center;
+  border-top: solid 1px;
+}
+.lm .sheet-header .header-fields .summary-shop li .market {
+  font-family: var(--font-special);
+  font-size: 18px;
+  border: none;
+  position: relative;
+  left: 85px;
+  top: 10px;
+}
+.lm .sheet-header .header-fields .summary-shop li input {
+  border: none;
+  background: var(--color-background);
+  font-weight: bolder;
+  font-size: 16px;
+}
+.lm .sheet-header .header-fields .summary-shop li .item.disp {
+  position: relative;
+  left: 26px;
+  bottom: 18px;
+}
+.lm .sheet-header .header-fields .summary.options label {
+  padding-top: 20px;
+  font-family: var(--font-special);
+  font-size: 18px;
+}
+.lm .sheet-header .header-fields .summary.options .item-control {
+  padding-top: 20px;
+}
+.lm .sheet-header .header-fields .summary li input {
+  border: none;
+  background: var(--color-background);
+}
+.lm .sheet-header .header-fields .summary li span {
+  padding-top: 5px;
+  font-weight: bold;
+}
+.lm .sheet-header .header-fields .summary .control.time {
+  flex: 0 0 40px;
+}
+.lm .sheet-header .header-fields .summary .control.encounter {
+  flex: 0 0 40px;
+  margin-top: 10px;
+}
+.lm .sheet-header .header-fields .summary .date {
+  margin-top: 4px;
+  border: solid 1px;
+  border-radius: 5%;
+}
+.lm .sheet-header .header-fields .summary .date .title {
+  background: var(--color-foreground);
+  color: white;
+}
+.lm .sheet-header .header-fields .summary .date input {
+  border-bottom: solid 1px;
+  padding-top: 5px;
+}
+.lm.sheet.actor .sheet-body .tab.description .groupGestion {
+  padding-top: 4px;
+  padding-bottom: 6px;
+  color: white;
+  background: var(--color-foreground);
+}
+.lm.sheet.actor .sheet-body .tab.description .groupGestion .name {
+  padding-top: 8px;
+  margin-left: 4px;
+}
+.lm.sheet.actor .sheet-body .tab.description .groupGestion input {
+  color: black;
+  background: var(--color-background);
+  margin-bottom: 4px;
+  margin-left: 4px;
+  text-align: center;
+}
+.lm.sheet.actor .sheet-body .tab.description .groupGestion a {
+  text-align: center;
+  margin-left: 3px;
+}
+.lm.sheet.actor .sheet-body .tab.description .member-container {
+  border: none;
+  box-shadow: 0 0 6px var(--color-border);
+  font-size: 12px;
+  line-height: 16px;
+  padding: 1px 2px;
+  width: 240px;
+  height: 200px;
+  flex: 0 0 240px;
+}
+
+
+
+
+

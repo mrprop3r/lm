@@ -1,0 +1,14 @@
+<form class="lm dialog">
+    <div class="form-group">
+        <label>{{localize 'LM.lan.lan'}}</label>
+        <div class="form-fields">
+            <select name="choice">
+                {{#select choices}}
+                {{#each choices as |label mode|}}
+                <option value="{{mode}}">{{ localize label }}</option>
+                {{/each}}
+                {{/select}}
+            </select>
+        </div>
+    </div>
+</div>

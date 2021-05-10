@@ -1,0 +1,32 @@
+{
+  "name": "lm",
+  "title": "Laberintos Mortales",
+  "description": "El sistema de Laberintos Mortales para FoundryVTT!",
+  "version": "0.2.8",
+  "minimumCoreVersion": "0.7.9",
+  "compatibleCoreVersion": "0.7.9",
+  "templateVersion": 2,
+  "author": "Mrprop3r",
+  "esmodules": ["module/lm.js"],
+  "styles": ["css/lm.css"],
+  "scripts": [],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+  ],
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "url": "https://github.com/mrprop3r/laberintosMortales",
+  "manifest": "https://github.com/mrprop3r/laberintosMortales/lm/system.json",
+  "download": "https://github.com/mrprop3r/laberintosMortales/archive/refs/heads/main.zip",
+  "license": "LICENSE.txt"
+}

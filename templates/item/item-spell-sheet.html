@@ -1,0 +1,58 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+     <div class="flexrow">
+      <div class="stats">
+        <div class="item-info">
+            <label class="quantity">{{ localize "LM.spells.level"}}</label>
+            <input type="text" name="data.lvl" value="{{data.lvl}}" data-dtype="Number" />
+        </div>
+        <div class="item-info">
+            <label>{{ localize "LM.spells.user"}}</label>
+            <select name="data.user">
+            {{#select data.user}}
+                <option value=""></option>
+                {{#each config.magicUser as |magic u|}}
+                <option value="{{u}}">{{ localize magic}}</option>
+              {{/each}}
+            {{/select}}
+            </select>
+        </div>
+        <div class="item-long">
+            <label class="quantity">{{ localize "LM.spells.duration"}}</label>
+            <input type="text" name="data.duration" value="{{data.duration}}" data-dtype="String" />
+        </div>
+        <div class="item-long">
+            <label class="quantity">{{ localize "LM.items.range"}}</label>
+            <input type="text" name="data.range" value="{{data.range}}" data-dtype="String" />
+        </div>
+        <div class="item-long">
+            <label class="quantity">{{ localize "LM.items.roll"}}</label>
+            <input type="text" name="data.roll" value="{{data.roll}}" data-dtype="String" />
+        </div>
+        <div class="item-info">
+            <label>{{localize 'LM.spell.save'}}</label>
+              <select name="data.save">
+                {{#select data.save}}
+                <option value=""></option>
+                {{#each config.savesShort as |save a|}}
+                <option value="{{a}}">{{save}}</option>
+                {{/each}}
+                {{/select}}
+              </select>
+        </div>
+        </div> 
+        <div class="description item-editor">
+            {{editor content=data.description target="data.description" button=true
+            owner=owner editable=editable}}        
+        </div>
+     </div>
+    </section>
+</form>

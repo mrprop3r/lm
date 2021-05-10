@@ -1,0 +1,64 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+            <div class="header-data">
+                <div class="form-group">
+                    <label title="{{localize 'LM.items.cost'}}"><i class="fas
+                        fa-circle"></i></label>
+                      <input
+                        type="text"
+                        name="data.cost"
+                        value="{{data.cost}}"
+                        data-dtype="Number"
+                        />
+                  </div>
+                  <div class="form-group">
+                    <label title="{{localize 'LM.items.weight'}}"><i class="fas
+                        fa-weight-hanging"></i></label>
+                      <input
+                        type="text"
+                        name="data.weight"
+                        value="{{data.weight}}"
+                        data-dtype="Number"
+                        />
+                  </div>
+            </div>
+        </div>
+    </header>
+
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+     <div class="flexrow">
+      <div class="stats">
+        <div class="item-info">
+            <label>{{ localize "LM.items.carriedIn"}}</label>
+            <select name="data.carried">
+            {{#select data.carried}}
+              {{#each containers as |id name|}}
+                  <option value="{{id}}">{{name}}</option>
+              {{/each}}
+            {{/select}}
+            </select>
+        </div>
+        <div class="item-info">
+            <label class="quantity">{{ localize "LM.items.quantity"}}</label>
+            <input type="text" name="data.quantity" value="{{data.quantity}}" data-dtype="Number" />
+        </div>
+        <div class="item-info">
+            <label>{{localize 'LM.items.treasure'}}</label>
+            <a class="item-toggle treasure {{# if data.treasure}}active{{/if}}"
+              title='{{localize "LM.items.treasure"}}'>
+              <i class="far {{#if data.treasure}}fa-times-circle{{else}}fa-circle{{/if}}"></i>
+              </a>
+        </div>
+       </div> 
+       <div class="description">
+        {{editor content=data.description target="data.description" button=true
+        owner=owner editable=editable}}        
+    </div>
+     </div>
+    </section>
+</form>

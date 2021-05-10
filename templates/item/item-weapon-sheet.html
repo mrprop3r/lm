@@ -1,0 +1,131 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+            <div class="header-fields">
+             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+             <div class="header-data">
+                <div class="form-group">
+                    <label title="{{localize 'LM.items.cost'}}"><i class="fas
+                        fa-circle"></i></label>
+                      <input
+                        type="text"
+                        name="data.cost"
+                        value="{{data.cost}}"
+                        data-dtype="Number"
+                        />
+                  </div>
+                  <div class="form-group">
+                    <label title="{{localize 'LM.items.weight'}}"><i class="fas
+                        fa-weight-hanging"></i></label>
+                      <input
+                        type="text"
+                        name="data.weight"
+                        value="{{data.weight}}"
+                        data-dtype="Number"
+                        />
+                  </div>
+            </div>
+            <div>
+                <ol class="tag-list">
+                    {{#each data.tags as |tag|}}
+                    <li class="tag" title="{{tag.title}}" data-tag="{{tag.value}}">
+                        <span>{{tag.value}}</span>
+                        <a class="tag-delete"><i class="fas fa-times"></i></a>
+                    </li>
+                    {{/each}}
+                </ol>
+            </div>
+    </header>
+
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+    <div class="flexrow">
+            <div class="stats">
+              <div class="form-fields">
+                    <input
+                      type="text"
+                      data-action="add-tag"
+                      title="{{localize 'LM.items.typeTag'}}"
+                      placeholder="{{localize 'LM.items.enterTag'}}"
+                      />
+              </div>
+              <div class="item-info">
+                  <label>{{ localize "LM.items.carriedIn"}}</label>
+                  <select name="data.carried">
+                  {{#select data.carried}}
+                    {{#each containers as |id name|}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                  {{/select}}
+                  </select>
+              </div>
+              <div class="item-multi">
+                <label>{{ localize "LM.items.damage"}}</label>
+                <div class="item-damages">
+                  <input type="text" name="data.damage" value="{{data.damage}}" data-dtype="String" />
+                   <label>/</label>
+                  <input type="text" name="data.damage2" value="{{data.damage2}}" data-dtype="string" />
+                </div>
+              </div> 
+              <div class="item-info">
+                <label>{{ localize "LM.items.bonus"}}</label>
+                <input type="text" name="data.bonus" value="{{data.bonus}}" data-dtype="Number" />
+              </div>
+              {{#unless data.missile }}
+              <div class="item-info">
+                <label>{{ localize "LM.items.wc"}}</label>
+                <input type="text" name="data.wc" value="{{data.wc}}" data-dtype="Number" />
+              </div>
+              {{/unless}}
+              <div class="item-info">
+                <label>{{ localize "LM.items.crit"}}</label>
+                <input type="text" name="data.crit" value="{{data.crit}}" data-dtype="Number" />
+              </div>
+              <div class="ranges-icons">
+                <a title="{{localize 'LM.items.melee'}}" class="melee-toggle 
+                  {{#if data.melee}}active{{/if}}"><i class="fas fa-fist-raised"></i></a>
+                <a title="{{localize 'LM.items.throw'}}" class="throw-toggle
+                  {{#if data.throw}}active{{/if}}"><i class="fas fa-star"></i></a>
+                <a title="{{localize 'LM.items.missile'}}" class="missile-toggle
+                  {{#if data.missile}}active{{/if}}"><i class="fas fa-bullseye"></i></a>                </div>
+              {{#if (ors data.missile data.throw)}}
+              <div class="item-multi">
+                <label>{{localize 'LM.items.range'}}</label>
+                <div class="item-range">
+                  <input
+                    type="text"
+                    name="data.range.short"
+                    value="{{data.range.short}}"
+                    data-dtype="Number"
+                    />
+                    <div class="sep"></div>
+                    <input
+                    type="text"
+                    name="data.range.medium"
+                    value="{{data.range.medium}}"
+                    data-dtype="Number"
+                    />
+                    <div class="sep"></div>
+                    <input
+                    type="text"
+                    name="data.range.long"
+                    value="{{data.range.long}}"
+                    data-dtype="Number"
+                    />
+                </div>
+                <div class="item-info">
+                  <label>{{ localize "LM.items.ammunition.type"}}</label>
+                  <input type="text" name="data.range.ammunition.quantity" value="{{data.range.ammunition.quantity}}" data-dtype="Number" />
+                </div>
+              </div>
+              {{/if}}
+          </div>
+              <div class="description">
+                  {{editor content=data.description target="data.description" button=true
+                  owner=owner editable=editable}}        
+              </div>
+          </div>
+    </div>
+    </section>
+</form>

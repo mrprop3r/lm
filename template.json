@@ -1,0 +1,324 @@
+{
+  "Actor": {
+    "types": ["character", "monster", "container"],
+    "templates": {
+      "base": {
+        "retainer": {
+          "enabled": false,
+          "occupation": "",
+          "porter": false,
+          "moral": 0,
+          "wage": "",
+          "pxWage": 100
+        },
+        "magicUser": false,
+        "canSpell": {
+            "value": 0,
+            "1": {
+              "max": 0
+            },
+            "2": {
+              "max": 0
+            },
+            "3": {
+              "max": 0
+            },
+            "4": {
+              "max": 0
+            },
+            "5": {
+              "max": 0
+            },
+            "6": {
+              "max": 0
+            },
+            "7": {
+              "max": 0
+            },
+            "8": {
+              "max": 0
+            },
+            "9": {
+              "max": 0
+            }
+        },
+        "hp": {
+          "hd": "d4",
+          "rest": {
+            "value": 0
+          },
+          "value": 4,
+          "max": 4
+        },
+        "ac": {
+          "value": 9
+        },        
+        "thac0": {
+          "value": 20,
+          "mod": {
+            "melee": 0,
+            "missile": 0
+          }
+        },
+        "saves": {
+          "death": {
+            "value": 0
+          },
+          "wand": {
+            "value": 0
+          },
+          "paralysis": {
+            "value": 0
+          },
+          "breath": {
+            "value": 0
+          },
+          "spell": {
+            "value": 0
+          }
+        },
+        "movement": {
+          "base": 120,
+          "other": ""
+        },
+        "initiative": {
+          "value": 0,
+          "mod": 0
+        },
+        "surprise": {
+          "value": 2,
+          "mod": 0
+        }
+      }
+    },
+    "character": {
+      "templates": ["base"],
+      "biography": "",
+      "notes": "",
+      "description": {
+        "aligment": "",
+        "title": "",
+        "level": {
+          "value": 0,
+          "xp":0,
+          "xpnext": 100,
+          "bonus": 0
+        }
+      },
+      "class": {
+        "value": "lvl0"
+      },
+      "abilities": {
+        "str": {
+          "value": 0
+        },
+        "dex": {
+          "value": 0
+        },
+        "con": {
+          "value": 0
+        },
+        "int": {
+          "value": 0
+        },
+        "wis": {
+          "value": 0
+        },
+        "cha": {
+          "value": 0
+        }
+      },
+      "skills": {
+        "acr": {
+          "value": 0
+        },
+        "arch":{
+          "value": 0
+        },
+        "sea": {
+          "value": 0
+        },
+        "he": {
+          "value": 0
+        },
+        "bd": {
+          "value": 0
+        },
+        "gh": {
+          "value": 0
+        },
+        "lan": {
+          "value": 0,
+          "ini": [],
+          "learn": []
+        },
+        "man": {
+          "value": 0
+        },
+        "st": {
+          "value": 0
+        },
+        "sur": {
+          "value": 0
+        },
+        "back": {
+          "value": 1,
+          "yes": false,
+          "hit": 0,
+          "dmg": 1
+        },
+        "turn": {
+          "yes": false,
+          "righteous": false,
+          "used": 0
+        },
+        "luck": {
+          "yes": false,
+          "value": 1
+        }
+      },
+      "encumbrance": {
+        "max": 2300,
+        "containersCapacity": 0
+      }
+    },
+    "monster": {
+      "templates": ["base"],
+      "biography": "",
+      "aligment": "",
+      "xp": 5,
+      "treasure": {
+        "table": "A",
+        "type": ""
+      },
+      "appearing": {
+        "d": "0",
+        "w": "0"
+      },
+      "attacks": ""
+    },
+    "container": {
+      "templates": ["base"],
+      "biography": "",
+      "notes": "",
+      "gm": true,
+      "group": false,
+      "shop": false,
+      "object": false,
+      "members": "",
+      "market": {
+        "class": "VI"
+      },
+      "capacity": 0,
+      "travel": "<strong>Guia:</strong><br /><strong>Vigía:</strong><br /><strong>Forrajear:</strong><br /><strong>Preparar campamento:</strong>",
+      "time": {
+        "assault": 1,
+        "turn": 1,
+        "hour": 0,
+        "day": 1,
+        "month": 1,
+        "year": ""
+      },
+      "pxShare": 0
+    }
+  },
+  "Item": {
+    "types": ["item", "weapon", "armor", "container", "consumable", "feature", "spell", "occupation"],
+    "templates": {
+        "common": {
+            "description": "",
+            "weight": 0,
+            "quantity": 1,
+            "cost": 0,
+            "equipped": false,
+            "packed": false,
+            "fast": false,
+            "treasure": false,
+            "identified": true,
+            "carried": "encima",
+            "conta": "0",
+            "hands": 0,
+            "fastBonus": 0
+        }
+    },
+    "item": {
+        "templates": ["common"]
+    },
+    "weapon": {
+        "templates": ["common"],
+        "save": "",
+        "damage": "1d4",
+        "damage2": "1d8",
+        "wc": 0,
+        "bonus": 0,
+        "crit": 20,
+        "tags": [],
+        "isDamage2": false,
+        "slow": false,
+        "melee": true,
+        "throw": false,
+        "missile": false,
+        "twoHanded": false,
+        "oneTwoHands": false,
+        "range": {
+          "short": 0,
+          "medium": 10,
+          "long": 20,
+          "ammunition": {
+            "type": "",
+            "quantity": 0
+          }
+        },
+        "counter": {
+          "value": 0,
+          "max": 0
+        }
+    },
+    "armor": {
+        "templates": ["common"],
+        "ac": 9,
+        "type": "light",
+        "damage": "1d3",
+        "wc": 0,
+        "bonus": 0,
+        "crit": 20,
+        "splintered": false
+    },
+    "container": {
+        "templates": ["common"],
+        "capacity": {
+          "max": 1,
+          "value": 0
+        },
+        "drop": false
+    },
+    "consumable": {
+        "templates": ["common"],
+        "uses": []
+    },
+    "feature": {
+        "templates": ["common"],
+        "roll": "",
+        "rollType": "result",
+        "rollTarget": 0,
+        "blindroll": false,
+        "save": ""
+    },
+    "spell": {
+        "templates": ["common"],
+        "lvl": 1,
+        "user": "arcano",
+        "duration": "",
+        "range": "",
+        "roll": "",
+        "description": "",
+        "memorized": 0,
+        "cast": 0,
+        "save": ""
+    },
+    "occupation": {
+        "templates": ["common"],
+        "coins": "2d6*10"
+    }
+  }
+}

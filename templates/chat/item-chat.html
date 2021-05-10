@@ -1,0 +1,23 @@
+<div class="lm chat-card item-chat" data-actor-id="{{actor._id}}" data-item-id="{{item._id}}"
+    {{#if tokenId}}data-token-id="{{tokenId}}" {{/if}}>
+    <header class="card-header flexrow">
+        <img src="{{item.img}}" title="{{item.name}}" width="26" height="26" />
+        <h3 class="item-name"><a>{{item.name}}</a></h3>
+    </header>
+
+    <div class="card-content">
+        {{{data.description}}}
+    </div>
+
+    <div class="card-buttons">
+        {{#if data.roll}}
+        <span><a title='{{ localize "LM.rollCheck"}}'>{{ localize "LM.rollCheck"}} : [[/r {{data.roll}}]] {{#if data.blindroll}}({{localize 'LM.items.blindRoll'}}){{/if}}</span>
+        {{/if}}
+    </div>
+
+    <footer class="card-footer">
+        {{#each data.properties}}
+        <span>{{this}}</span>
+        {{/each}}
+    </footer>
+</div>

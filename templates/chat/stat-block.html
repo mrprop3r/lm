@@ -1,0 +1,31 @@
+<div class="lm chat-card actor-chat" data-actor-id="{{actor._id}}" data-item-id="{{actor._id}}"
+    {{#if tokenId}}data-token-id="{{tokenId}}" {{/if}}>
+    <header class="card-header flexrow">
+        <img src="{{actor.img}}" title="{{actor.name}}" width="26" height="26" />
+        <h3 class="item-name"><a>{{actor.name}}</a></h3>
+    </header>
+
+    <div class="card-content flexcol">
+        <div>
+            <strong>{{localize 'LM.abilities.str.long'}}: </strong><span>{{str}}</span>
+        </div>
+        <div>
+            <strong>{{localize 'LM.abilities.int.long'}}: </strong><span>{{int}}</span>
+        </div>
+        <div>
+            <strong>{{localize 'LM.abilities.wis.long'}}: </strong><span>{{wis}}</span>
+        </div>
+        <div>
+            <strong>{{localize 'LM.abilities.dex.long'}}: </strong><span>{{dex}}</span>
+        </div>
+        <div>
+            <strong>{{localize 'LM.abilities.con.long'}}: </strong><span>{{con}}</span>
+        </div>
+        <div>
+            <strong>{{localize 'LM.abilities.cha.long'}}: </strong><span>{{cha}}</span>
+        </div>
+    </div>
+    <div class="card-buttons">
+        <button class="apply abilities">{{ localize 'LM.abilities.statApply'}}{{actor.name}}</button>
+    </div>
+</div>
