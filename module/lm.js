@@ -28,8 +28,8 @@ Hooks.once('init', async function() {
   CONFIG.LM = LM;
 
   // Define custom Entity classes
-  CONFIG.Actor.entityClass = LmActor;
-  CONFIG.Item.entityClass = LmItem;
+  CONFIG.Actor.documentClass = LmActor;
+  CONFIG.Item.documentClass = LmItem;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
